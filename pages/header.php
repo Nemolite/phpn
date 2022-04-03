@@ -7,5 +7,10 @@
 	<title>Document</title>
 </head>
 <body>
+<ul>
+    <li><a href="/">Главная страница</a></li>
+    <li><a href="portfolio">Портфолио</a></li>
+    <li><a href="onas">О нас</a></li>
+    <li><a href="contact">Контакты</a></li>
+</ul>
 
-	<h1> <?= $nameOfHeader ?> </h1>

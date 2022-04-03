@@ -7,18 +7,22 @@ class Router {
     /**
      * @param array $pages
      */
-    public function setPages($url, $path)
+    public function setRouters($url, $path)
     {
-        $this->pages[$url] = $path;
+       $this->pages[$url] = $path;
     }
 
     /**
      * @return array
      */
-    public function getPages($url)
+    public function getRouters($url)
     {
-        $path = $this->pages[$url];
-        $page = VIEW_DIR . $path;
+
+        if(isset($this->pages[$url])) {
+            $page = VIEW_DIR . $this->pages[$url];
+        } else {
+            $page = null;
+        }
 
         if (file_exists($page)){
             require $page;
@@ -27,4 +31,5 @@ class Router {
             die();
         }
     }
+
 }

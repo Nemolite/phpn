@@ -22,8 +22,20 @@ function autoload($className)
 }
 spl_autoload_register('autoload');
 
+// Получение и обратока GET - запроса
+if($_SERVER['REQUEST_URI']!==''){
+    $path = mb_substr($_SERVER['REQUEST_URI'],1);
+}
+if($_SERVER['REQUEST_URI']==='/') {
+    $path ='/';
+}
+
+// настройка роутера
 $router = new Router();
-show($router);
-var_dump($router);
+$router->setRouters('/','home.php');
+$router->setRouters('contact','contact.php');
+$router->setRouters('onas','onas.php');
+$router->setRouters('portfolio','portfolio.php');
 
-
+// Роутинг
+$router->getRouters($path);

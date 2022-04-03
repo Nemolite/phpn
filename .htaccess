@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    # включить работу перенаправления запросов
+    RewriteEngine On
+    # путь от корня сайта до .htaccess. т.к в корне то /
+    RewriteBase /
+    # если запрос не является файлом (!-f)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # или директорией (!-d)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # о любое количество любых символов (.*)
+    # редиректить по адресу index.php/
+    # после слэша идет полностью результат.
+    RewriteRule .* index.php/$1 [QSA,L]
+</IfModule>
